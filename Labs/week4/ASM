@@ -1,0 +1,55 @@
+080483e4 <add>:
+ 80483e4:	55                   	push   %ebp
+ 80483e5:	89 e5                	mov    %esp,%ebp
+ 80483e7:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 80483ea:	03 45 08             	add    0x8(%ebp),%eax
+ 80483ed:	5d                   	pop    %ebp
+ 80483ee:	c3                   	ret    
+
+080483ef <ptrAdd>:
+ 80483ef:	55                   	push   %ebp
+ 80483f0:	89 e5                	mov    %esp,%ebp
+ 80483f2:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 80483f5:	8b 00                	mov    (%eax),%eax
+ 80483f7:	8b 55 08             	mov    0x8(%ebp),%edx
+ 80483fa:	03 02                	add    (%edx),%eax
+ 80483fc:	5d                   	pop    %ebp
+ 80483fd:	c3                   	ret    
+
+080483fe <main>:
+ 80483fe:	55                   	push   %ebp
+ 80483ff:	89 e5                	mov    %esp,%ebp
+ 8048401:	83 e4 f0             	and    $0xfffffff0,%esp
+ 8048404:	83 ec 20             	sub    $0x20,%esp
+ 8048407:	c7 44 24 1c 08 00 00 	movl   $0x8,0x1c(%esp)
+ 804840e:	00 
+ 804840f:	c7 44 24 18 14 00 00 	movl   $0x14,0x18(%esp)
+ 8048416:	00 
+ 8048417:	c7 44 24 04 0a 00 00 	movl   $0xa,0x4(%esp)
+ 804841e:	00 
+ 804841f:	c7 04 24 05 00 00 00 	movl   $0x5,(%esp)
+ 8048426:	e8 b9 ff ff ff       	call   80483e4 <add>
+ 804842b:	a3 20 a0 04 08       	mov    %eax,0x804a020
+ 8048430:	c7 05 24 a0 04 08 32 	movl   $0x32,0x804a024
+ 8048437:	00 00 00 
+ 804843a:	c7 05 1c a0 04 08 64 	movl   $0x64,0x804a01c
+ 8048441:	00 00 00 
+ 8048444:	c7 44 24 04 1c a0 04 	movl   $0x804a01c,0x4(%esp)
+ 804844b:	08 
+ 804844c:	c7 04 24 24 a0 04 08 	movl   $0x804a024,(%esp)
+ 8048453:	e8 97 ff ff ff       	call   80483ef <ptrAdd>
+ 8048458:	a3 20 a0 04 08       	mov    %eax,0x804a020
+ 804845d:	8d 44 24 18          	lea    0x18(%esp),%eax
+ 8048461:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 8048465:	8d 44 24 1c          	lea    0x1c(%esp),%eax
+ 8048469:	89 04 24             	mov    %eax,(%esp)
+ 804846c:	e8 7e ff ff ff       	call   80483ef <ptrAdd>
+ 8048471:	a3 20 a0 04 08       	mov    %eax,0x804a020
+ 8048476:	89 44 24 08          	mov    %eax,0x8(%esp)
+ 804847a:	c7 44 24 04 60 85 04 	movl   $0x8048560,0x4(%esp)
+ 8048481:	08 
+ 8048482:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 8048489:	e8 76 fe ff ff       	call   8048304 <__printf_chk@plt>
+ 804848e:	b8 00 00 00 00       	mov    $0x0,%eax
+ 8048493:	c9                   	leave  
+ 8048494:	c3                   	ret    

@@ -1,0 +1,4 @@
+break main
+break add
+break ptrAdd
+display/i $pc
